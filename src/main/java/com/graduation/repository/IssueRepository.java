@@ -24,13 +24,13 @@ public class IssueRepository {
     }
 
     public Issue findbyId(int id) {
-        Issue product = null;
-        for (Issue item : issues) {
-            if (item.getId() == id) {
-                product = item;
+        Issue issue = null;
+        for (Issue i : issues) {
+            if (i.getId() == id) {
+                issue = i;
             }
         }
-        return product;
+        return issue;
     }
 
     public List<Issue> findAll() {
@@ -40,4 +40,5 @@ public class IssueRepository {
     public void removeAll() {
         issues.clear();
     }
+
 }

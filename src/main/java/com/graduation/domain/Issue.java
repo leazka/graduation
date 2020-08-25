@@ -1,11 +1,13 @@
 package com.graduation.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.util.Date;
 import java.util.Set;
 
 @Data
+@AllArgsConstructor
 public class Issue implements Comparable<Issue> {
     private int id;
     private boolean open;
@@ -13,7 +15,6 @@ public class Issue implements Comparable<Issue> {
     private String assignee;
     private Set<String> labels;
     private Date openedAt;
-    private Date closedAt;
 
 
     @Override

@@ -40,4 +40,11 @@ public class IssueManager {
         }
         return result;
     }
+
+    public void closeIssue(int issueId){
+        Issue issue = repository.findbyId(issueId);
+        if (issue.isOpen()){
+            issue.setOpen(false);
+        }
+    }
 }
