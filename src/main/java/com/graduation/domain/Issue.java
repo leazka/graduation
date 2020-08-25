@@ -3,7 +3,7 @@ package com.graduation.domain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.Set;
 
 @Data
@@ -14,7 +14,7 @@ public class Issue implements Comparable<Issue> {
     private String author;
     private String assignee;
     private Set<String> labels;
-    private Date openedAt;
+    private LocalDateTime openedAt;
 
 
     @Override
