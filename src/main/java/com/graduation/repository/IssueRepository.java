@@ -23,7 +23,7 @@ public class IssueRepository {
         issues.removeIf((i) -> i.getId() == id);
     }
 
-    public Issue findbyId(int id) {
+    public Issue findById(int id) {
         Issue issue = null;
         for (Issue i : issues) {
             if (i.getId() == id) {

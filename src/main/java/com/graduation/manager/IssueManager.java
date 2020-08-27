@@ -4,7 +4,11 @@ import com.graduation.domain.Issue;
 import com.graduation.repository.IssueRepository;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class IssueManager {
     private IssueRepository repository;
@@ -19,7 +23,7 @@ public class IssueManager {
     }
 
     public Issue findById(int id) {
-        return repository.findbyId(id);
+        return repository.findById(id);
     }
 
     public void removeAll() {
@@ -30,20 +34,29 @@ public class IssueManager {
         repository.removeById(id);
     }
 
-    public List<Issue> searchBy(String request) {
-        List<Issue> issues = repository.findAll();
-        List<Issue> result = new ArrayList<>();
-        for (Issue issue : issues) {
-            if (issue.matches(request)) {
-                result.add(issue);
-            }
-        }
-        return result;
+    public List<Issue> searchBy(Predicate<Issue> filter) {
+        return repository.findAll().stream()
+                .filter(filter)
+                .sorted(Comparator.reverseOrder())
+                .collect(Collectors.toList());
     }
 
-    public void closeIssue(int issueId){
-        Issue issue = repository.findbyId(issueId);
-        if (issue.isOpen()){
+    public List<Issue> searchByAuthor(String author) {
+        return searchBy(issue -> issue.getAuthor().equalsIgnoreCase(author));
+    }
+
+    public List<Issue> searchByAssignee(String assignee) {
+        return searchBy(issue -> issue.getAssignee().equalsIgnoreCase(assignee));
+    }
+
+    public List<Issue> searchByLabel(String label) {
+        return searchBy(issue -> Objects.nonNull(issue.getLabels()) && issue.getLabels().contains(label.toLowerCase()));
+    }
+
+
+    public void closeIssue(int issueId) {
+        Issue issue = repository.findById(issueId);
+        if (issue.isOpen()) {
             issue.setOpen(false);
         }
     }

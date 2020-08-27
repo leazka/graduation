@@ -13,6 +13,8 @@ public class Issue implements Comparable<Issue> {
     private boolean open;
     private String author;
     private String assignee;
+    private String summary;
+    private String description;
     private Set<String> labels;
     private LocalDateTime openedAt;
 
@@ -22,17 +24,4 @@ public class Issue implements Comparable<Issue> {
         return this.openedAt.compareTo(o.openedAt);
     }
 
-    public boolean matches(String request) {
-        boolean result = false;
-        if (this.author.equalsIgnoreCase(request)) {
-            return true;
-        }
-        if (this.assignee.equalsIgnoreCase(request)) {
-            return true;
-        }
-        if (this.labels.contains(request)) {
-            return true;
-        }
-        return result;
-    }
 }
