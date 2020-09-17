@@ -60,8 +60,8 @@
                         </rule>
                     </rules>
                     <excludes>
-                        <exclude>com/iqoption/domain/**/*</exclude>
-                        <exclude>com/iqoption/repository/**/*</exclude>
+                        <exclude>com/graduation/domain/**/*</exclude>
+                        <!--<exclude>com/iqoption/repository/**/*</exclude>-->
                     </excludes>
                 </configuration>
             </plugin>

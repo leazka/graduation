@@ -2,6 +2,7 @@ package com.graduation.manager;
 
 import com.graduation.domain.Issue;
 import com.graduation.repository.IssueRepository;
+import lombok.AllArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -10,6 +11,7 @@ import java.util.Objects;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
+@AllArgsConstructor
 public class IssueManager {
     private IssueRepository repository;
 
